@@ -2,6 +2,7 @@ package lab;
 
 class Inheritance extends Child
 {
+//main method
 public static void main(String [ ] args)
 {
 //Creating object
