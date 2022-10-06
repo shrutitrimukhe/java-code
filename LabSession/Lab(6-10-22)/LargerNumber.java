@@ -1,6 +1,10 @@
-package lab;
+/* Create a program to find largest of two numbers
+ * Name: shruti
+ * Date:6-10-22
+ */
 
-	//import
+package lab;
+  //import
 	import java.util.Scanner;
 	// Create class
 	public class LargerNumber
