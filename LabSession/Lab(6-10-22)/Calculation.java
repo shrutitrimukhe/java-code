@@ -1,5 +1,10 @@
+/*create a program for calculation.read three values from the user for operation first and second values are operands. third value is operator.
+ * if user press1=>print addition of first and second ,if user press2=>print substraction of first and second,if user press3=>print multiplication of first and second
+ * if user press4=>print division of first and second 
+ * Name:shruti
+ * Date : 6-10-22
+ */
 package lab;
-
 
 	import java.util.Scanner;
 	//Creating class
