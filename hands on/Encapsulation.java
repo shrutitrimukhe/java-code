@@ -1,3 +1,7 @@
+/*Encapsulation Program
+* Name:shruti
+* Date:7/10/22
+*/
 package Encapculation;
 
 class Encapculation
