@@ -1,3 +1,7 @@
+/* Interface program
+* name:shruti
+* date:7/10/22
+*/
 package Encapculation;
 
 interface Polygon {
