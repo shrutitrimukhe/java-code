@@ -1,3 +1,6 @@
+/* Q. Bitwise Operator
+Name: Shruti Trimukhe.  */
+
 package Practice;
 
 import java.util.Scanner;
