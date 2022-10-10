@@ -19,6 +19,8 @@ public class BitwiseOperator1 {
 		sc.close();
 		
 		//Bitwise AND operator 
+		//num1=9 , num2=8
+
 		System.out.println("num1&num2="+(num1&num2));
 		//1 0 0 1
 		//1 0 0 0
