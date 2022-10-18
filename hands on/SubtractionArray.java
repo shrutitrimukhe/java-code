@@ -74,7 +74,7 @@ public class SubtractionArray {
                 }
             }
             //Print the resultant matrix
-            System.out.println("Matrix Multiplication is:");
+            System.out.println("Matrix Subtraction is:");
             for (int i = 0; i < p; i++) 
             {
                 for (int j = 0; j < n; j++) 
