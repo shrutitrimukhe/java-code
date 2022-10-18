@@ -74,7 +74,7 @@ public class DivisionArray {
                 }
             }
             //Print the resultant matrix
-            System.out.println("Matrix Multiplication is:");
+            System.out.println("Matrix  Division is:");
             for (int i = 0; i < p; i++) 
             {
                 for (int j = 0; j < n; j++) 
