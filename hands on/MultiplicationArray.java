@@ -7,7 +7,7 @@ public class MultiplicationArray {
 
 	public static void main(String[] args) {
 
-		int p, q, m, n,sum;   //Declare matrix size
+		int p, q, m, n;  //Declare matrix size
         Scanner sc = new Scanner(System.in);
         System.out.print("Enter the number of rows in the first matrix:");
         p = sc.nextInt();    //Initialize first matrix size
@@ -17,7 +17,7 @@ public class MultiplicationArray {
         m = sc.nextInt();   //Initialize second matrix size
         System.out.print("Enter the number of columns in the second matrix:");
         n = sc.nextInt();   //Initialize second matrix size
-        if (q == m) 
+        if (p == m && q == n) 
         {
             int a[][] = new int[p][q];    //Declare first matrix
             int b[][] = new int[m][n];    //Declare second matrix
@@ -67,12 +67,12 @@ public class MultiplicationArray {
             {
                 for (int j = 0; j < n; j++) 
                 {
-                	sum=0;
+                	
                     for (int k = 0; k < q; k++) 
                     {
-                        sum+= a[i][j] * b[i][j];
+                       c[i][j]= a[i][j] * b[i][j];
                     }
-                    c[i][j]=sum;
+                   
                 }
             }
             //Print the resultant matrix
