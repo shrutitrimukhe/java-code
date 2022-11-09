@@ -1,0 +1,196 @@
+create database employee;
+Query OK, 1 row affected (0.25 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| sys                |
++--------------------+
+5 rows in set (0.11 sec)
+
+mysql> use employee;
+Database changed
+mysql> create table employee(
+    -> id int not null auto_increment,
+    -> name varchar(20) not null,
+    -> age int not null,
+    -> primary key(id)
+    -> );
+Query OK, 0 rows affected (0.81 sec)
+
+mysql> show tables;
++--------------------+
+| Tables_in_employee |
++--------------------+
+| employee           |
++--------------------+
+1 row in set (0.11 sec)
+mysql> desc employee;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(20) | NO   |     | NULL    |                |
+| age   | int         | NO   |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+3 rows in set (0.05 sec)
+
+mysql> insert into employee(id,name,age)values(1,'avi',25);
+Query OK, 1 row affected (0.16 sec)
+
+mysql> insert into employee(id,name,age)values(2,'mini',27);
+Query OK, 1 row affected (0.10 sec)
+
+mysql> insert into employee(id,name,age)values(3,'tina',30);
+Query OK, 1 row affected (0.03 sec)
+
+mysql> select * from employee;
++----+------+-----+
+| id | name | age |
++----+------+-----+
+|  1 | avi  |  25 |
+|  2 | mini |  27 |
+|  3 | tina |  30 |
++----+------+-----+
+3 rows in set (0.00 sec)
+
+mysql> update employee set name='dolly' where id=1;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++----+-------+-----+
+| id | name  | age |
++----+-------+-----+
+|  1 | dolly |  25 |
+|  2 | mini  |  27 |
+|  3 | tina  |  30 |
++----+-------+-----+
+3 rows in set (0.00 sec)
+
+mysql> alter table employee add location varchar(50) not null;
+Query OK, 0 rows affected (0.19 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee
+    -> ;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| id       | int         | NO   | PRI | NULL    | auto_increment |
+| name     | varchar(20) | NO   |     | NULL    |                |
+| age      | int         | NO   |     | NULL    |                |
+| location | varchar(50) | NO   |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> select * from employee;
++----+-------+-----+----------+
+| id | name  | age | location |
++----+-------+-----+----------+
+|  1 | dolly |  25 |          |
+|  2 | mini  |  27 |          |
+|  3 | tina  |  30 |          |
++----+-------+-----+----------+
+3 rows in set (0.00 sec)
+
+mysql> update employee set location='thane' where id=1;
+Query OK, 1 row affected (0.09 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++----+-------+-----+----------+
+| id | name  | age | location |
++----+-------+-----+----------+
+|  1 | dolly |  25 | thane    |
+|  2 | mini  |  27 |          |
+|  3 | tina  |  30 |          |
++----+-------+-----+----------+
+3 rows in set (0.00 sec)
+
+mysql> update employee set location='pune' where id=2;
+Query OK, 1 row affected (0.08 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> update employee set location='kyn' where id=3;
+Query OK, 1 row affected (0.03 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from employee;
++----+-------+-----+----------+
+| id | name  | age | location |
++----+-------+-----+----------+
+|  1 | dolly |  25 | thane    |
+|  2 | mini  |  27 | pune     |
+|  3 | tina  |  30 | kyn      |
++----+-------+-----+----------+
+3 rows in set (0.00 sec)
+
+mysql> alter table employee modify location varchar(40) null;
+Query OK, 3 rows affected (0.25 sec)
+Records: 3  Duplicates: 0  Warnings: 0
+
+mysql> desc employee;
++----------+-------------+------+-----+---------+----------------+
+| Field    | Type        | Null | Key | Default | Extra          |
++----------+-------------+------+-----+---------+----------------+
+| id       | int         | NO   | PRI | NULL    | auto_increment |
+| name     | varchar(20) | NO   |     | NULL    |                |
+| age      | int         | NO   |     | NULL    |                |
+| location | varchar(40) | YES  |     | NULL    |                |
++----------+-------------+------+-----+---------+----------------+
+4 rows in set (0.00 sec)
+
+mysql> alter table employee drop column location;
+Query OK, 0 rows affected (0.06 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc employee;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(20) | NO   |     | NULL    |                |
+| age   | int         | NO   |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> alter table employee rename to emp;
+Query OK, 0 rows affected (0.13 sec)
+
+mysql> desc employee;
+ERROR 1146 (42S02): Table 'employee.employee' doesn't exist
+mysql> desc emp;
++-------+-------------+------+-----+---------+----------------+
+| Field | Type        | Null | Key | Default | Extra          |
++-------+-------------+------+-----+---------+----------------+
+| id    | int         | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(20) | NO   |     | NULL    |                |
+| age   | int         | NO   |     | NULL    |                |
++-------+-------------+------+-----+---------+----------------+
+3 rows in set (0.00 sec)
+
+mysql> delete from emp where id=3;
+Query OK, 1 row affected (0.07 sec)
+
+mysql> select * from emp;
++----+-------+-----+
+| id | name  | age |
++----+-------+-----+
+|  1 | dolly |  25 |
+|  2 | mini  |  27 |
++----+-------+-----+
+2 rows in set (0.00 sec)
+
+mysql> drop table emp;
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> select * from emp;
+ERROR 1146 (42S02): Table 'employee.emp' doesn't exist
+mysql> show tables;
+Empty set (0.00 sec)
