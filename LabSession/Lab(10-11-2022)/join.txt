@@ -1,0 +1,210 @@
+/*Q.Performing joint 
+Name:Shruti Trimukhe
+Date:10-11-2022*/
+
+ create database std;
+Query OK, 1 row affected (0.16 sec)
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| employee           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| std                |
+| stu                |
+| student            |
+| sys                |
++--------------------+
+8 rows in set (0.12 sec)
+
+mysql> use std;
+Database changed
+mysql> create table teacher(
+    -> t_id int not null,
+    -> t_name varchar(20) not null,
+    -> course_name varchar(20) not null,
+    -> primary key(t_id));
+Query OK, 0 rows affected (0.29 sec)
+
+
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| company            |
+| employee           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| std                |
+| stu                |
+| student            |
+| sys                |
++--------------------+
+9 rows in set (0.00 sec)
+
+
+mysql> use std;
+Database changed
+mysql> insert into teacher values(1,'sonu','python');
+Query OK, 1 row affected (0.09 sec)
+
+mysql> insert into teacher values(2,'shital','c#');
+Query OK, 1 row affected (0.05 sec)
+
+mysql> insert into teacher values(3,'kumar','c++');
+Query OK, 1 row affected (0.04 sec)
+
+mysql> select * from teacher;
++------+--------+-------------+
+| t_id | t_name | course_name |
++------+--------+-------------+
+|    1 | sonu   | python      |
+|    2 | shital | c#          |
+|    3 | kumar  | c++         |
++------+--------+-------------+
+3 rows in set (0.00 sec)
+
+
+ use std;
+Database changed
+mysql> select * from teacher;
++------+--------+-------------+
+| t_id | t_name | course_name |
++------+--------+-------------+
+|    1 | sonu   | python      |
+|    2 | shital | c#          |
+|    3 | kumar  | c++         |
++------+--------+-------------+
+3 rows in set (0.03 sec)
+
+
+mysql> insert into emp1 values(1,'raghu','thane');
+ERROR 1146 (42S02): Table 'std.emp1' doesn't exist
+mysql> use std;
+Database changed
+mysql> show databases;
++--------------------+
+| Database           |
++--------------------+
+| company            |
+| employee           |
+| information_schema |
+| mysql              |
+| performance_schema |
+| std                |
+| stu                |
+| student            |
+| sys                |
++--------------------+
+9 rows in set (0.00 sec)
+
+mysql> create table employe1(
+    -> e_id int not null,
+    -> e_name varchar(20) not null,
+    -> e_location varchar(20) not null,
+    -> primary key(e_id));
+Query OK, 0 rows affected (0.29 sec)
+
+mysql> insert into employe1 values(1,'raghu','thane');
+Query OK, 1 row affected (0.17 sec)
+
+mysql> insert into employe1 values(2,'shanti','pune');
+Query OK, 1 row affected (0.15 sec)
+
+mysql> insert into employe1 values(3,'tina','airoli');
+Query OK, 1 row affected (0.12 sec)
+
+mysql> insert into employe1 values(4,'mini','mumbai');
+Query OK, 1 row affected (0.18 sec)
+
+mysql> insert into employe1 values(5,'sai','navi mumbai');
+Query OK, 1 row affected (0.14 sec)
+
+mysql> select * from employe1;
++------+--------+-------------+
+| e_id | e_name | e_location  |
++------+--------+-------------+
+|    1 | raghu  | thane       |
+|    2 | shanti | pune        |
+|    3 | tina   | airoli      |
+|    4 | mini   | mumbai      |
+|    5 | sai    | navi mumbai |
++------+--------+-------------+
+5 rows in set (0.00 sec)
+
+mysql> select * from teacher;
++------+--------+-------------+
+| t_id | t_name | course_name |
++------+--------+-------------+
+|    1 | sonu   | python      |
+|    2 | shital | c#          |
+|    3 | kumar  | c++         |
++------+--------+-------------+
+3 rows in set (0.00 sec)
+
+mysql> select teacher.t_name,teacher.course_name,employe1.e_name from teacher
+    -> INNER JOIN employe1
+    -> ON teacher.t_id=employe1.e_id;
++--------+-------------+--------+
+| t_name | course_name | e_name |
++--------+-------------+--------+
+| sonu   | python      | raghu  |
+| shital | c#          | shanti |
+| kumar  | c++         | tina   |
++--------+-------------+--------+
+3 rows in set (0.00 sec)
+
+mysql> select teacher.t_name,teacher.course_name,employe1.e_name from teacher
+    -> LEFT JOIN employe1
+    -> ON teacher.t_id=employe1.e_id;
++--------+-------------+--------+
+| t_name | course_name | e_name |
++--------+-------------+--------+
+| sonu   | python      | raghu  |
+| shital | c#          | shanti |
+| kumar  | c++         | tina   |
++--------+-------------+--------+
+3 rows in set (0.10 sec)
+
+mysql> select teacher.t_name,teacher.course_name,employe1.e_name from teacher
+    -> RIGHT JOIN employe1
+    -> ON teacher.t_id=employe1.e_id;
++--------+-------------+--------+
+| t_name | course_name | e_name |
++--------+-------------+--------+
+| sonu   | python      | raghu  |
+| shital | c#          | shanti |
+| kumar  | c++         | tina   |
+| NULL   | NULL        | mini   |
+| NULL   | NULL        | sai    |
++--------+-------------+--------+
+5 rows in set (0.00 sec)
+
+
+mysql> select * FROM teacher CROSS JOIN employe1;
++------+--------+-------------+------+--------+-------------+
+| t_id | t_name | course_name | e_id | e_name | e_location  |
++------+--------+-------------+------+--------+-------------+
+|    3 | kumar  | c++         |    1 | raghu  | thane       |
+|    2 | shital | c#          |    1 | raghu  | thane       |
+|    1 | sonu   | python      |    1 | raghu  | thane       |
+|    3 | kumar  | c++         |    2 | shanti | pune        |
+|    2 | shital | c#          |    2 | shanti | pune        |
+|    1 | sonu   | python      |    2 | shanti | pune        |
+|    3 | kumar  | c++         |    3 | tina   | airoli      |
+|    2 | shital | c#          |    3 | tina   | airoli      |
+|    1 | sonu   | python      |    3 | tina   | airoli      |
+|    3 | kumar  | c++         |    4 | mini   | mumbai      |
+|    2 | shital | c#          |    4 | mini   | mumbai      |
+|    1 | sonu   | python      |    4 | mini   | mumbai      |
+|    3 | kumar  | c++         |    5 | sai    | navi mumbai |
+|    2 | shital | c#          |    5 | sai    | navi mumbai |
+|    1 | sonu   | python      |    5 | sai    | navi mumbai |
++------+--------+-------------+------+--------+-------------+
+15 rows in set (0.00 sec)
+
+mysql>
