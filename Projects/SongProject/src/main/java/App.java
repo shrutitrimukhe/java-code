@@ -26,8 +26,8 @@ public class App {
         Song song1 = new Song();
  
         song1.setId(1);
-        song1.setSongName("Broken Angel");
-        song1.setArtist("Akon");
+        song1.setSongName("MastMagan");
+        song1.setArtist("Arijit");
         
  
         session.beginTransaction();
